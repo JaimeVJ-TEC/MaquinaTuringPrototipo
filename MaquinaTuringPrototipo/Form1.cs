@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace MaquinaTuringPrototipo
 {
@@ -34,9 +35,8 @@ namespace MaquinaTuringPrototipo
             listView2.Alignment = ListViewAlignment.Left;
             listView2.OwnerDraw = true;
             listView2.DrawItem += listView2_DrawItem;
-            listView2.TileSize = new Size(15,
+            listView2.TileSize = new Size(20,
             listView2.ClientSize.Height - (SystemInformation.HorizontalScrollBarHeight));
-
         }
 
         //Evento para dibujar un elemento del Listview que muestra la cadena
@@ -457,7 +457,19 @@ namespace MaquinaTuringPrototipo
                 }
 
                 listView1.Items[MaquinaT.Cinta.PosicionActual].Checked = true;
-                listView2.Items[MaquinaT.OperacionActual].Checked = true;
+
+                if (MaquinaT.OperacionActual == listView2.Items.Count)
+                {
+                    foreach (ListViewItem L in listView2.Items)
+                    {
+                        if (L.Checked)
+                            L.Checked = false;
+                    }
+                }
+                else
+                {
+                    listView2.Items[MaquinaT.OperacionActual].Checked = true;
+                }
 
                 MaquinaT.EjecutarOperacion();
             }

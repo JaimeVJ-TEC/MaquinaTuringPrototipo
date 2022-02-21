@@ -56,28 +56,25 @@ namespace MaquinaTuringPrototipo
         }
 
         //Operacion de busqueda a derecha o izquierda
-        public void Buscar(bool Derecha, char Simbolo)
+        public bool Buscar(bool Derecha, char Simbolo)
         {
             if (Simbolo == 'Δ' || Simbolo == '#' || Alfabeto.Contains(Simbolo))
             {
-                bool Encontrado = false;
                 if (Derecha)
                 {
-                    while (!Encontrado)
-                    {
-                        Movimiento(true);
-                        if (_Cadena[PosicionActual] == Simbolo)
-                            Encontrado = true;
-                    }
+                    Movimiento(true);
+                    if (_Cadena[PosicionActual] == Simbolo)
+                        return true;
+                    else
+                        return false;
                 }
                 else
                 {
-                    while (!Encontrado)
-                    {
-                        Movimiento(false);
-                        if (_Cadena[PosicionActual] == Simbolo)
-                            Encontrado = true;
-                    }
+                    Movimiento(false);
+                    if (_Cadena[PosicionActual] == Simbolo)
+                        return true;
+                    else
+                        return false;
                 }
             }
             else

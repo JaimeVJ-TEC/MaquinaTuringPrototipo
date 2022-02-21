@@ -16,7 +16,13 @@ namespace MaquinaTuringPrototipo
 
         public void EjecutarOperacion()
         {
+            if (OperacionActual == Operaciones.Count)
+            {
+                throw new Exception("Fin");
+            }
+
             Operacion Op = Operaciones[OperacionActual];
+            bool resultado =true;
 
             switch(Op.Tipo)
             {
@@ -25,7 +31,7 @@ namespace MaquinaTuringPrototipo
                     break;
 
                 case "Busqueda":
-                    Cinta.Buscar(Op.Derecha, Op.Simbolo);
+                    resultado = Cinta.Buscar(Op.Derecha, Op.Simbolo);
                     break;
 
                 case "Sobreescribir":
@@ -53,12 +59,14 @@ namespace MaquinaTuringPrototipo
                     }
                 }
             }
+            else if(Op.Tipo == "Busqueda" && resultado == false)
+            {
+                
+            }
             else
             {
                 OperacionActual++;
             }
-
-            //throw new Exception("Fin");
         }
     }
 }
