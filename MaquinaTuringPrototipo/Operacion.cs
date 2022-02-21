@@ -32,6 +32,14 @@ namespace MaquinaTuringPrototipo
             set { _blnDerecha = value; }
         }
 
+        private bool _blnNegacion;
+
+        public bool Negacion
+        {
+            get { return _blnNegacion; }
+            set { _blnNegacion = value; }
+        }
+
         public List<Decision> Decisiones = new List<Decision>();
     }
 }

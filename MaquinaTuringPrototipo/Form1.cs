@@ -35,7 +35,7 @@ namespace MaquinaTuringPrototipo
             listView2.Alignment = ListViewAlignment.Left;
             listView2.OwnerDraw = true;
             listView2.DrawItem += listView2_DrawItem;
-            listView2.TileSize = new Size(20,
+            listView2.TileSize = new Size(25,
             listView2.ClientSize.Height - (SystemInformation.HorizontalScrollBarHeight));
         }
 
@@ -224,6 +224,12 @@ namespace MaquinaTuringPrototipo
                 case 2:
                     op.Tipo = "Busqueda";
                     op.Derecha = true;
+
+                    if (chkNegacionOp.Checked)
+                        op.Negacion = true;
+                    else
+                        op.Negacion = false;
+
                     if (txtSimboloBusqueda.Text != "" || txtSimboloBusqueda.Text.Length == 1)
                     {
                         char SubSimbolo = char.Parse(txtSimboloBusqueda.Text);
@@ -242,6 +248,12 @@ namespace MaquinaTuringPrototipo
                 case 3:
                     op.Tipo = "Busqueda";
                     op.Derecha = false;
+
+                    if (chkNegacionOp.Checked)
+                        op.Negacion = true;
+                    else
+                        op.Negacion = false;
+
                     if (txtSimboloBusqueda.Text != "" || txtSimboloBusqueda.Text.Length == 1)
                     {
                         char SubSimbolo = char.Parse(txtSimboloBusqueda.Text);
@@ -295,42 +307,56 @@ namespace MaquinaTuringPrototipo
                     txtSimboloBusqueda.Enabled = false;
                     txtSimboloReescribir.Enabled = false;
                     chkNegacionOp.Enabled = false;
+                    btnDelta.Enabled = false;
+                    button1.Enabled = false;
                     break;
 
                 case 1:
                     txtSimboloBusqueda.Enabled = false;
                     txtSimboloReescribir.Enabled = false;
                     chkNegacionOp.Enabled = false;
+                    btnDelta.Enabled = false;
+                    button1.Enabled = false;
                     break;
 
                 case 2:
                     txtSimboloBusqueda.Enabled = true;
                     txtSimboloReescribir.Enabled = false;
                     chkNegacionOp.Enabled = true;
+                    btnDelta.Enabled = false;
+                    button1.Enabled = true;
                     break;
 
                 case 3:
                     txtSimboloBusqueda.Enabled = true;
                     txtSimboloReescribir.Enabled = false;
                     chkNegacionOp.Enabled = true;
+                    btnDelta.Enabled = false;
+                    button1.Enabled = true;
                     break;
 
                 case 4:
                     txtSimboloBusqueda.Enabled = false;
                     txtSimboloReescribir.Enabled = true;
                     chkNegacionOp.Enabled = false;
+                    btnDelta.Enabled = true;
+                    button1.Enabled = false;
                     break;
 
                 case 5:
                     txtSimboloBusqueda.Enabled = false;
                     txtSimboloReescribir.Enabled = false;
                     chkNegacionOp.Enabled = false;
+                    btnDelta.Enabled = false;
+                    button1.Enabled = false;
                     break;
 
                 case 6:
                     txtSimboloBusqueda.Enabled = false;
                     txtSimboloReescribir.Enabled = false;
                     chkNegacionOp.Enabled = false;
+                    btnDelta.Enabled = false;
+                    button1.Enabled = false;
                     break;
             }
         }
@@ -351,10 +377,14 @@ namespace MaquinaTuringPrototipo
                         break;
 
                     case "Busqueda":
-                        if(op.Derecha)
+                        if(op.Derecha && !op.Negacion)
                             listView2.Items.Add("D" + op.Simbolo  +"\n" + Num);
-                        else
+                        else if (!op.Derecha && !op.Negacion)
                             listView2.Items.Add("I" + op.Simbolo + "\n" + Num);
+                        else if (op.Derecha && op.Negacion)
+                            listView2.Items.Add("D¬" + op.Simbolo + "\n" + Num);
+                        else if (!op.Derecha && op.Negacion)
+                            listView2.Items.Add("I¬" + op.Simbolo + "\n" + Num);
                         break;
 
                     case "Sobreescribir":
@@ -392,7 +422,10 @@ namespace MaquinaTuringPrototipo
 
                 foreach (Decision d in MaquinaT.Operaciones[Posicion].Decisiones)
                 {
-                    listBox1.Items.Add(d.Condicion + " → (" + (d.OperacionDestino + 1) + ")");
+                    if(d.Negacion)
+                        listBox1.Items.Add("¬" + d.Condicion + " → (" + (d.OperacionDestino + 1) + ")");
+                    else
+                        listBox1.Items.Add(d.Condicion + " → (" + (d.OperacionDestino + 1) + ")");
                 }
             }
         }
@@ -425,6 +458,7 @@ namespace MaquinaTuringPrototipo
                         decision.OperacionOrig = Posicion;
                         decision.OperacionDestino = (int)numDestino.Value - 1;
                         decision.Condicion = char.Parse(txtDecision.Text);
+                        decision.Negacion = chkNegacionDec.Checked;
 
                         MaquinaT.Operaciones[Posicion].Decisiones.Add(decision);
                         ActualziarDecisiones();
@@ -441,42 +475,167 @@ namespace MaquinaTuringPrototipo
         {
             try
             {
-                ActualizarCadena();
-                listView1.SelectedItems.Clear();
-                listView2.SelectedItems.Clear();
-
+                bool Checked = false;
                 foreach (ListViewItem L in listView1.Items)
                 {
                     if (L.Checked)
-                        L.Checked = false;
+                        Checked = true;
                 }
 
-                foreach (ListViewItem L in listView2.Items)
+                if (Checked)
                 {
-                    if (L.Checked)
-                        L.Checked = false;
-                }
+                    ActualizarCadena();
+                    listView1.SelectedItems.Clear();
+                    listView2.SelectedItems.Clear();
 
-                listView1.Items[MaquinaT.Cinta.PosicionActual].Checked = true;
+                    foreach (ListViewItem L in listView1.Items)
+                    {
+                        if (L.Checked)
+                            L.Checked = false;
+                    }
 
-                if (MaquinaT.OperacionActual == listView2.Items.Count)
-                {
                     foreach (ListViewItem L in listView2.Items)
                     {
                         if (L.Checked)
                             L.Checked = false;
                     }
+
+                    listView1.Items[MaquinaT.Cinta.PosicionActual].Checked = true;
+
+                    if (MaquinaT.OperacionActual == listView2.Items.Count)
+                    {
+                        foreach (ListViewItem L in listView2.Items)
+                        {
+                            if (L.Checked)
+                                L.Checked = false;
+                        }
+                    }
+                    else
+                    {
+                        listView2.Items[MaquinaT.OperacionActual].Checked = true;
+                    }
+
+                    MaquinaT.EjecutarOperacion();
                 }
                 else
                 {
-                    listView2.Items[MaquinaT.OperacionActual].Checked = true;
+                    MessageBox.Show("Seleccione la posicion inicial del cabezal");
                 }
-
-                MaquinaT.EjecutarOperacion();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDelta_Click(object sender, EventArgs e)
+        {
+            txtSimboloBusqueda.Text = "Δ";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtSimboloReescribir.Text = "Δ";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtDecision.Text = "Δ";
+        }
+
+        private void btnOperacionEliminar_Click(object sender, EventArgs e)
+        {
+            MaquinaT.Operaciones.RemoveAt(MaquinaT.Operaciones.Count - 1);
+            ActualizarOperaciones();
+        }
+
+        private void btnDecisionEliminar_Click(object sender, EventArgs e)
+        {
+            if (listView2.SelectedItems.Count > 0)
+            {
+                if (listBox1.SelectedItem != null)
+                {
+                    int Posicion = 0;
+                    foreach (ListViewItem L in listView2.Items)
+                    {
+                        if (L.Selected)
+                            break;
+                        Posicion++;
+                    }
+
+                    MaquinaT.Operaciones[Posicion].Decisiones.RemoveAt(listBox1.SelectedIndex);
+                    ActualziarDecisiones();
+                }
+            }
+        }
+
+        private void btnReiniciarCadena_Click(object sender, EventArgs e)
+        {
+            MaquinaT.Cinta.PosicionActual = MaquinaT.Cinta.PosiciconInicial;
+            ActualizarCadena();
+            listView1.SelectedItems.Clear();
+            listView2.SelectedItems.Clear();
+
+            foreach (ListViewItem L in listView1.Items)
+            {
+                if (L.Checked)
+                    L.Checked = false;
+            }
+
+            foreach (ListViewItem L in listView2.Items)
+            {
+                if (L.Checked)
+                    L.Checked = false;
+            }
+
+            listView1.Items[MaquinaT.Cinta.PosicionActual].Checked = true;
+
+            if (MaquinaT.OperacionActual == listView2.Items.Count)
+            {
+                foreach (ListViewItem L in listView2.Items)
+                {
+                    if (L.Checked)
+                        L.Checked = false;
+                }
+            }
+            else
+            {
+                listView2.Items[MaquinaT.OperacionActual].Checked = true;
+            }
+        }
+
+        private void btnReiniciarOperaciones_Click(object sender, EventArgs e)
+        {
+            MaquinaT.OperacionActual = 0;
+            ActualizarOperaciones();
+            listView1.SelectedItems.Clear();
+            listView2.SelectedItems.Clear();
+
+            foreach (ListViewItem L in listView1.Items)
+            {
+                if (L.Checked)
+                    L.Checked = false;
+            }
+
+            foreach (ListViewItem L in listView2.Items)
+            {
+                if (L.Checked)
+                    L.Checked = false;
+            }
+
+            listView1.Items[MaquinaT.Cinta.PosicionActual].Checked = true;
+
+            if (MaquinaT.OperacionActual == listView2.Items.Count)
+            {
+                foreach (ListViewItem L in listView2.Items)
+                {
+                    if (L.Checked)
+                        L.Checked = false;
+                }
+            }
+            else
+            {
+                listView2.Items[MaquinaT.OperacionActual].Checked = true;
             }
         }
     }

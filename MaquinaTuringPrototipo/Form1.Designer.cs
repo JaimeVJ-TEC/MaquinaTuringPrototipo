@@ -45,23 +45,30 @@ namespace MaquinaTuringPrototipo
             this.label3 = new System.Windows.Forms.Label();
             this.btnPosicionInicial = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.cboOperacion = new System.Windows.Forms.ComboBox();
-            this.txtSimboloBusqueda = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.chkNegacionOp = new System.Windows.Forms.CheckBox();
-            this.txtSimboloReescribir = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnOperacion = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.numDestino = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnDecision = new System.Windows.Forms.Button();
             this.chkNegacionDec = new System.Windows.Forms.CheckBox();
             this.txtDecision = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnDecision = new System.Windows.Forms.Button();
+            this.btnOperacion = new System.Windows.Forms.Button();
+            this.txtSimboloReescribir = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.chkNegacionOp = new System.Windows.Forms.CheckBox();
+            this.txtSimboloBusqueda = new System.Windows.Forms.TextBox();
+            this.cboOperacion = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.listView2 = new System.Windows.Forms.ListView();
             this.btnEjecutarPasos = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numDestino = new System.Windows.Forms.NumericUpDown();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btnDelta = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnOperacionEliminar = new System.Windows.Forms.Button();
+            this.btnDecisionEliminar = new System.Windows.Forms.Button();
+            this.btnReiniciarOperaciones = new System.Windows.Forms.Button();
+            this.btnReiniciarCadena = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -218,6 +225,9 @@ namespace MaquinaTuringPrototipo
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnOperacionEliminar);
+            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btnDelta);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.btnOperacion);
             this.groupBox3.Controls.Add(this.txtSimboloReescribir);
@@ -229,93 +239,15 @@ namespace MaquinaTuringPrototipo
             this.groupBox3.Controls.Add(this.listView2);
             this.groupBox3.Location = new System.Drawing.Point(13, 190);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(613, 248);
+            this.groupBox3.Size = new System.Drawing.Size(662, 248);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Operaciones";
             // 
-            // listView2
-            // 
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(9, 19);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(578, 71);
-            this.listView2.TabIndex = 13;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
-            // 
-            // cboOperacion
-            // 
-            this.cboOperacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOperacion.FormattingEnabled = true;
-            this.cboOperacion.Items.AddRange(new object[] {
-            "Derecha",
-            "Izquierda",
-            "Busqueda a derecha",
-            "Busqueda a izquierda",
-            "Sobreescrbir",
-            "Guardar",
-            "N"});
-            this.cboOperacion.Location = new System.Drawing.Point(6, 96);
-            this.cboOperacion.Name = "cboOperacion";
-            this.cboOperacion.Size = new System.Drawing.Size(171, 21);
-            this.cboOperacion.TabIndex = 14;
-            this.cboOperacion.SelectedIndexChanged += new System.EventHandler(this.cboOperacion_SelectedIndexChanged);
-            // 
-            // txtSimboloBusqueda
-            // 
-            this.txtSimboloBusqueda.Location = new System.Drawing.Point(103, 121);
-            this.txtSimboloBusqueda.Name = "txtSimboloBusqueda";
-            this.txtSimboloBusqueda.Size = new System.Drawing.Size(39, 20);
-            this.txtSimboloBusqueda.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 124);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Simbolo a buscar:";
-            // 
-            // chkNegacionOp
-            // 
-            this.chkNegacionOp.AutoSize = true;
-            this.chkNegacionOp.Location = new System.Drawing.Point(157, 123);
-            this.chkNegacionOp.Name = "chkNegacionOp";
-            this.chkNegacionOp.Size = new System.Drawing.Size(72, 17);
-            this.chkNegacionOp.TabIndex = 15;
-            this.chkNegacionOp.Text = "Negacion";
-            this.chkNegacionOp.UseVisualStyleBackColor = true;
-            // 
-            // txtSimboloReescribir
-            // 
-            this.txtSimboloReescribir.Location = new System.Drawing.Point(103, 158);
-            this.txtSimboloReescribir.Name = "txtSimboloReescribir";
-            this.txtSimboloReescribir.Size = new System.Drawing.Size(39, 20);
-            this.txtSimboloReescribir.TabIndex = 17;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 161);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Simbolo a escribir:";
-            // 
-            // btnOperacion
-            // 
-            this.btnOperacion.Location = new System.Drawing.Point(6, 200);
-            this.btnOperacion.Name = "btnOperacion";
-            this.btnOperacion.Size = new System.Drawing.Size(107, 29);
-            this.btnOperacion.TabIndex = 18;
-            this.btnOperacion.Text = "Agregar operacion";
-            this.btnOperacion.UseVisualStyleBackColor = true;
-            this.btnOperacion.Click += new System.EventHandler(this.btnOperacion_Click);
-            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnDecisionEliminar);
+            this.groupBox4.Controls.Add(this.button2);
             this.groupBox4.Controls.Add(this.listBox1);
             this.groupBox4.Controls.Add(this.numDestino);
             this.groupBox4.Controls.Add(this.label7);
@@ -323,12 +255,61 @@ namespace MaquinaTuringPrototipo
             this.groupBox4.Controls.Add(this.chkNegacionDec);
             this.groupBox4.Controls.Add(this.txtDecision);
             this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Location = new System.Drawing.Point(273, 96);
+            this.groupBox4.Location = new System.Drawing.Point(261, 96);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(334, 146);
+            this.groupBox4.Size = new System.Drawing.Size(395, 146);
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Decisiones";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(232, 12);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(157, 121);
+            this.listBox1.TabIndex = 25;
+            // 
+            // numDestino
+            // 
+            this.numDestino.Location = new System.Drawing.Point(107, 52);
+            this.numDestino.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numDestino.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numDestino.Name = "numDestino";
+            this.numDestino.Size = new System.Drawing.Size(49, 20);
+            this.numDestino.TabIndex = 24;
+            this.numDestino.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 54);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(96, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Operacion destino:";
+            // 
+            // btnDecision
+            // 
+            this.btnDecision.Location = new System.Drawing.Point(14, 104);
+            this.btnDecision.Name = "btnDecision";
+            this.btnDecision.Size = new System.Drawing.Size(107, 29);
+            this.btnDecision.TabIndex = 20;
+            this.btnDecision.Text = "Agregar decision";
+            this.btnDecision.UseVisualStyleBackColor = true;
+            this.btnDecision.Click += new System.EventHandler(this.btnDecision_Click);
             // 
             // chkNegacionDec
             // 
@@ -356,19 +337,89 @@ namespace MaquinaTuringPrototipo
             this.label6.TabIndex = 20;
             this.label6.Text = "Simbolo a buscar:";
             // 
-            // btnDecision
+            // btnOperacion
             // 
-            this.btnDecision.Location = new System.Drawing.Point(14, 104);
-            this.btnDecision.Name = "btnDecision";
-            this.btnDecision.Size = new System.Drawing.Size(107, 29);
-            this.btnDecision.TabIndex = 20;
-            this.btnDecision.Text = "Agregar decision";
-            this.btnDecision.UseVisualStyleBackColor = true;
-            this.btnDecision.Click += new System.EventHandler(this.btnDecision_Click);
+            this.btnOperacion.Location = new System.Drawing.Point(6, 200);
+            this.btnOperacion.Name = "btnOperacion";
+            this.btnOperacion.Size = new System.Drawing.Size(107, 29);
+            this.btnOperacion.TabIndex = 18;
+            this.btnOperacion.Text = "Agregar operacion";
+            this.btnOperacion.UseVisualStyleBackColor = true;
+            this.btnOperacion.Click += new System.EventHandler(this.btnOperacion_Click);
+            // 
+            // txtSimboloReescribir
+            // 
+            this.txtSimboloReescribir.Location = new System.Drawing.Point(103, 158);
+            this.txtSimboloReescribir.Name = "txtSimboloReescribir";
+            this.txtSimboloReescribir.Size = new System.Drawing.Size(39, 20);
+            this.txtSimboloReescribir.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 161);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Simbolo a escribir:";
+            // 
+            // chkNegacionOp
+            // 
+            this.chkNegacionOp.AutoSize = true;
+            this.chkNegacionOp.Location = new System.Drawing.Point(183, 124);
+            this.chkNegacionOp.Name = "chkNegacionOp";
+            this.chkNegacionOp.Size = new System.Drawing.Size(72, 17);
+            this.chkNegacionOp.TabIndex = 15;
+            this.chkNegacionOp.Text = "Negacion";
+            this.chkNegacionOp.UseVisualStyleBackColor = true;
+            // 
+            // txtSimboloBusqueda
+            // 
+            this.txtSimboloBusqueda.Location = new System.Drawing.Point(103, 121);
+            this.txtSimboloBusqueda.Name = "txtSimboloBusqueda";
+            this.txtSimboloBusqueda.Size = new System.Drawing.Size(39, 20);
+            this.txtSimboloBusqueda.TabIndex = 7;
+            // 
+            // cboOperacion
+            // 
+            this.cboOperacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOperacion.FormattingEnabled = true;
+            this.cboOperacion.Items.AddRange(new object[] {
+            "Derecha",
+            "Izquierda",
+            "Busqueda a derecha",
+            "Busqueda a izquierda",
+            "Sobreescrbir",
+            "Guardar",
+            "N"});
+            this.cboOperacion.Location = new System.Drawing.Point(6, 96);
+            this.cboOperacion.Name = "cboOperacion";
+            this.cboOperacion.Size = new System.Drawing.Size(171, 21);
+            this.cboOperacion.TabIndex = 14;
+            this.cboOperacion.SelectedIndexChanged += new System.EventHandler(this.cboOperacion_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 124);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Simbolo a buscar:";
+            // 
+            // listView2
+            // 
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(9, 19);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(647, 71);
+            this.listView2.TabIndex = 13;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
             // 
             // btnEjecutarPasos
             // 
-            this.btnEjecutarPasos.Location = new System.Drawing.Point(658, 403);
+            this.btnEjecutarPasos.Location = new System.Drawing.Point(681, 403);
             this.btnEjecutarPasos.Name = "btnEjecutarPasos";
             this.btnEjecutarPasos.Size = new System.Drawing.Size(107, 29);
             this.btnEjecutarPasos.TabIndex = 23;
@@ -376,50 +427,83 @@ namespace MaquinaTuringPrototipo
             this.btnEjecutarPasos.UseVisualStyleBackColor = true;
             this.btnEjecutarPasos.Click += new System.EventHandler(this.btnEjecutarPasos_Click);
             // 
-            // label7
+            // btnDelta
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 13);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Operacion destino:";
+            this.btnDelta.Location = new System.Drawing.Point(149, 156);
+            this.btnDelta.Name = "btnDelta";
+            this.btnDelta.Size = new System.Drawing.Size(28, 23);
+            this.btnDelta.TabIndex = 10;
+            this.btnDelta.Text = "Δ";
+            this.btnDelta.UseVisualStyleBackColor = true;
+            this.btnDelta.Click += new System.EventHandler(this.btnDelta_Click);
             // 
-            // numDestino
+            // button1
             // 
-            this.numDestino.Location = new System.Drawing.Point(107, 52);
-            this.numDestino.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numDestino.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numDestino.Name = "numDestino";
-            this.numDestino.Size = new System.Drawing.Size(49, 20);
-            this.numDestino.TabIndex = 24;
-            this.numDestino.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.button1.Location = new System.Drawing.Point(149, 121);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Δ";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listBox1
+            // button2
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(171, 12);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(157, 121);
-            this.listBox1.TabIndex = 25;
+            this.button2.Location = new System.Drawing.Point(152, 22);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(28, 23);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Δ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnOperacionEliminar
+            // 
+            this.btnOperacionEliminar.Location = new System.Drawing.Point(147, 200);
+            this.btnOperacionEliminar.Name = "btnOperacionEliminar";
+            this.btnOperacionEliminar.Size = new System.Drawing.Size(107, 42);
+            this.btnOperacionEliminar.TabIndex = 21;
+            this.btnOperacionEliminar.Text = "Eliminar ultima operacion";
+            this.btnOperacionEliminar.UseVisualStyleBackColor = true;
+            this.btnOperacionEliminar.Click += new System.EventHandler(this.btnOperacionEliminar_Click);
+            // 
+            // btnDecisionEliminar
+            // 
+            this.btnDecisionEliminar.Location = new System.Drawing.Point(132, 104);
+            this.btnDecisionEliminar.Name = "btnDecisionEliminar";
+            this.btnDecisionEliminar.Size = new System.Drawing.Size(94, 29);
+            this.btnDecisionEliminar.TabIndex = 22;
+            this.btnDecisionEliminar.Text = "Eliminar decision";
+            this.btnDecisionEliminar.UseVisualStyleBackColor = true;
+            this.btnDecisionEliminar.Click += new System.EventHandler(this.btnDecisionEliminar_Click);
+            // 
+            // btnReiniciarOperaciones
+            // 
+            this.btnReiniciarOperaciones.Location = new System.Drawing.Point(685, 209);
+            this.btnReiniciarOperaciones.Name = "btnReiniciarOperaciones";
+            this.btnReiniciarOperaciones.Size = new System.Drawing.Size(103, 39);
+            this.btnReiniciarOperaciones.TabIndex = 24;
+            this.btnReiniciarOperaciones.Text = "Reiniciar operaciones";
+            this.btnReiniciarOperaciones.UseVisualStyleBackColor = true;
+            this.btnReiniciarOperaciones.Click += new System.EventHandler(this.btnReiniciarOperaciones_Click);
+            // 
+            // btnReiniciarCadena
+            // 
+            this.btnReiniciarCadena.Location = new System.Drawing.Point(685, 79);
+            this.btnReiniciarCadena.Name = "btnReiniciarCadena";
+            this.btnReiniciarCadena.Size = new System.Drawing.Size(103, 39);
+            this.btnReiniciarCadena.TabIndex = 25;
+            this.btnReiniciarCadena.Text = "Reiniciar posicion";
+            this.btnReiniciarCadena.UseVisualStyleBackColor = true;
+            this.btnReiniciarCadena.Click += new System.EventHandler(this.btnReiniciarCadena_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnReiniciarCadena);
+            this.Controls.Add(this.btnReiniciarOperaciones);
             this.Controls.Add(this.btnEjecutarPasos);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnPosicionInicial);
@@ -476,6 +560,13 @@ namespace MaquinaTuringPrototipo
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.NumericUpDown numDestino;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnDelta;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnOperacionEliminar;
+        private System.Windows.Forms.Button btnDecisionEliminar;
+        private System.Windows.Forms.Button btnReiniciarOperaciones;
+        private System.Windows.Forms.Button btnReiniciarCadena;
     }
 }
 

@@ -31,7 +31,7 @@ namespace MaquinaTuringPrototipo
                     break;
 
                 case "Busqueda":
-                    resultado = Cinta.Buscar(Op.Derecha, Op.Simbolo);
+                    resultado = Cinta.Buscar(Op.Derecha, Op.Simbolo,Op.Negacion);
                     break;
 
                 case "Sobreescribir":
@@ -53,9 +53,24 @@ namespace MaquinaTuringPrototipo
 
                 for (int i = 0; i <= a; i++)
                 {
-                    if (Cinta._Cadena[Cinta.PosicionActual] == Op.Decisiones[i].Condicion)
+                    if (!Op.Decisiones[i].Negacion)
+                    {
+                        if (Cinta._Cadena[Cinta.PosicionActual] == Op.Decisiones[i].Condicion)
+                        {
+                            OperacionActual = Op.Decisiones[i].OperacionDestino;
+                        }
+                        else
+                        {
+                            throw new Exception("Fin");
+                        }
+                    }
+                    else if (Cinta._Cadena[Cinta.PosicionActual] != Op.Decisiones[i].Condicion)
                     {
                         OperacionActual = Op.Decisiones[i].OperacionDestino;
+                    }
+                    else
+                    {
+                        throw new Exception("Fin");
                     }
                 }
             }
