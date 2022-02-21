@@ -441,6 +441,7 @@ namespace MaquinaTuringPrototipo
         {
             try
             {
+                ActualizarCadena();
                 listView1.SelectedItems.Clear();
                 listView2.SelectedItems.Clear();
 
