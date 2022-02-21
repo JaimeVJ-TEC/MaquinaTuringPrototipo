@@ -422,10 +422,14 @@ namespace MaquinaTuringPrototipo
 
                 foreach (Decision d in MaquinaT.Operaciones[Posicion].Decisiones)
                 {
-                    if(d.Negacion)
-                        listBox1.Items.Add("¬" + d.Condicion + " → (" + (d.OperacionDestino + 1) + ")");
-                    else
+                    if(d.Negacion && d.Condicion!='\0')
+                        listBox1.Items.Add("¬"+d.Condicion + " → (" + (d.OperacionDestino + 1) + ")");
+                    else if (!d.Negacion && d.Condicion != '\0')
                         listBox1.Items.Add(d.Condicion + " → (" + (d.OperacionDestino + 1) + ")");
+                    else if (d.Negacion && d.Condicion == '\0')
+                        listBox1.Items.Add(" → (" + (d.OperacionDestino + 1) + ")");
+                    else
+                        listBox1.Items.Add(" → (" + (d.OperacionDestino + 1) + ")");
                 }
             }
         }
@@ -439,11 +443,16 @@ namespace MaquinaTuringPrototipo
         {
             if (listView2.SelectedItems.Count > 0)
             {
-                if (txtDecision.Text != "" || txtDecision.Text.Length == 1)
+                if (txtDecision.Text.Length <= 1)
                 {
-                    char Simbolo = char.Parse(txtDecision.Text);
+                    char Simbolo;
 
-                    if (Simbolo == '#' || Simbolo == 'Δ' || MaquinaT.Cinta.Alfabeto.Contains(Simbolo))
+                    if (txtDecision.Text == "")
+                        Simbolo = '\0';
+                    else
+                        Simbolo = char.Parse(txtDecision.Text);
+
+                    if (Simbolo == '#' || Simbolo == 'Δ' || MaquinaT.Cinta.Alfabeto.Contains(Simbolo) || Simbolo =='\0')
                     {
                         int Posicion = 0;
 
@@ -457,7 +466,7 @@ namespace MaquinaTuringPrototipo
                         Decision decision = new Decision();
                         decision.OperacionOrig = Posicion;
                         decision.OperacionDestino = (int)numDestino.Value - 1;
-                        decision.Condicion = char.Parse(txtDecision.Text);
+                        decision.Condicion = Simbolo;
                         decision.Negacion = chkNegacionDec.Checked;
 
                         MaquinaT.Operaciones[Posicion].Decisiones.Add(decision);

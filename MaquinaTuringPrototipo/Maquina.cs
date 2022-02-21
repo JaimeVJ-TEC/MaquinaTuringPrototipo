@@ -53,26 +53,28 @@ namespace MaquinaTuringPrototipo
 
                 for (int i = 0; i <= a; i++)
                 {
+                    if (Op.Decisiones[i].Condicion == '\0')
+                    {
+                        OperacionActual = Op.Decisiones[i].OperacionDestino;
+                        return;
+                    }
+
                     if (!Op.Decisiones[i].Negacion)
                     {
                         if (Cinta._Cadena[Cinta.PosicionActual] == Op.Decisiones[i].Condicion)
                         {
                             OperacionActual = Op.Decisiones[i].OperacionDestino;
-                        }
-                        else
-                        {
-                            throw new Exception("Fin");
+                            return;
                         }
                     }
                     else if (Cinta._Cadena[Cinta.PosicionActual] != Op.Decisiones[i].Condicion)
                     {
                         OperacionActual = Op.Decisiones[i].OperacionDestino;
-                    }
-                    else
-                    {
-                        throw new Exception("Fin");
+                        return;
                     }
                 }
+                throw new Exception("Fin");
+
             }
             else if(Op.Tipo == "Busqueda" && resultado == false)
             {
