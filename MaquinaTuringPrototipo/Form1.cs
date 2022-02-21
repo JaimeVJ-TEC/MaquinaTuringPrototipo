@@ -78,6 +78,11 @@ namespace MaquinaTuringPrototipo
                 e.Graphics.FillRectangle(SystemBrushes.Highlight, e.Bounds);
                 textColor = SystemColors.HighlightText;
             }
+            else if (e.Item.Checked)
+            {
+                e.Graphics.FillRectangle(Brushes.Red, e.Bounds);
+                textColor = SystemColors.HighlightText;
+            }
             else
             {
                 e.Graphics.FillRectangle(Brushes.White, e.Bounds);
@@ -273,6 +278,11 @@ namespace MaquinaTuringPrototipo
                     op.Tipo = "Guardar";
                     MaquinaT.Operaciones.Add(op);
                     break;
+
+                case 6:
+                    op.Tipo = "N";
+                    MaquinaT.Operaciones.Add(op);
+                    break;
             }
             ActualizarOperaciones();
         }
@@ -316,6 +326,12 @@ namespace MaquinaTuringPrototipo
                     txtSimboloReescribir.Enabled = false;
                     chkNegacionOp.Enabled = false;
                     break;
+
+                case 6:
+                    txtSimboloBusqueda.Enabled = false;
+                    txtSimboloReescribir.Enabled = false;
+                    chkNegacionOp.Enabled = false;
+                    break;
             }
         }
 
@@ -351,6 +367,10 @@ namespace MaquinaTuringPrototipo
                     case "Guardar":
                         listView2.Items.Add("σ" + "\n" + Num);
                         break;
+
+                    case "N":
+                        listView2.Items.Add("N" + "\n" + Num);
+                        break;
                 }
                 Num++;
             }
@@ -372,7 +392,7 @@ namespace MaquinaTuringPrototipo
 
                 foreach (Decision d in MaquinaT.Operaciones[Posicion].Decisiones)
                 {
-                    listBox1.Items.Add(d.Condicion + " → (" + d.OperacionDestino + ")");
+                    listBox1.Items.Add(d.Condicion + " → (" + (d.OperacionDestino + 1) + ")");
                 }
             }
         }
@@ -403,7 +423,7 @@ namespace MaquinaTuringPrototipo
 
                         Decision decision = new Decision();
                         decision.OperacionOrig = Posicion;
-                        decision.OperacionDestino = (int)numDestino.Value;
+                        decision.OperacionDestino = (int)numDestino.Value - 1;
                         decision.Condicion = char.Parse(txtDecision.Text);
 
                         MaquinaT.Operaciones[Posicion].Decisiones.Add(decision);
@@ -414,6 +434,36 @@ namespace MaquinaTuringPrototipo
                 }
                 else
                     MessageBox.Show("Simbolo no valido");
+            }
+        }
+
+        private void btnEjecutarPasos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                listView1.SelectedItems.Clear();
+                listView2.SelectedItems.Clear();
+
+                foreach (ListViewItem L in listView1.Items)
+                {
+                    if (L.Checked)
+                        L.Checked = false;
+                }
+
+                foreach (ListViewItem L in listView2.Items)
+                {
+                    if (L.Checked)
+                        L.Checked = false;
+                }
+
+                listView1.Items[MaquinaT.Cinta.PosicionActual].Checked = true;
+                listView2.Items[MaquinaT.OperacionActual].Checked = true;
+
+                MaquinaT.EjecutarOperacion();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

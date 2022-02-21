@@ -254,7 +254,8 @@ namespace MaquinaTuringPrototipo
             "Busqueda a derecha",
             "Busqueda a izquierda",
             "Sobreescrbir",
-            "Guardar"});
+            "Guardar",
+            "N"});
             this.cboOperacion.Location = new System.Drawing.Point(6, 96);
             this.cboOperacion.Name = "cboOperacion";
             this.cboOperacion.Size = new System.Drawing.Size(171, 21);
@@ -373,6 +374,7 @@ namespace MaquinaTuringPrototipo
             this.btnEjecutarPasos.TabIndex = 23;
             this.btnEjecutarPasos.Text = "Ejecutar por pasos";
             this.btnEjecutarPasos.UseVisualStyleBackColor = true;
+            this.btnEjecutarPasos.Click += new System.EventHandler(this.btnEjecutarPasos_Click);
             // 
             // label7
             // 

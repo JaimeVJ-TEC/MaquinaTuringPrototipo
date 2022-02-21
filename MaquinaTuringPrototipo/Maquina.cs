@@ -12,7 +12,7 @@ namespace MaquinaTuringPrototipo
 
         public List<Operacion> Operaciones = new List<Operacion>();
 
-        int OperacionActual = 0;
+        public int OperacionActual = 0;
 
         public void EjecutarOperacion()
         {
@@ -35,11 +35,15 @@ namespace MaquinaTuringPrototipo
                 case "Guardar":
                     Cinta.Guardar();
                     break;
+
+                case "N":
+                    Cinta.Nada();
+                    break;
             }
 
             if(Op.Decisiones.Count > 0)
             {
-                int a = Op.Decisiones.Count;
+                int a = Op.Decisiones.Count -1;
 
                 for (int i = 0; i <= a; i++)
                 {
@@ -54,7 +58,7 @@ namespace MaquinaTuringPrototipo
                 OperacionActual++;
             }
 
-            throw new Exception("Fin");
+            //throw new Exception("Fin");
         }
     }
 }

@@ -100,5 +100,11 @@ namespace MaquinaTuringPrototipo
         {
             Memoria = _Cadena[PosicionActual];
         }
+
+        //Operacion N
+        public void Nada()
+        {
+            return;
+        }
     }
 }
