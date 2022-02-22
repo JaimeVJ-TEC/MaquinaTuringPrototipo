@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MaquinaTuringPrototipo
 {
+    /*
+     * La clase Decision representa las aristas (flechas) de los diagramas de estados y maquinas compuestas
+     */
     public class Decision
     {
         private int _intOperacionOrig;

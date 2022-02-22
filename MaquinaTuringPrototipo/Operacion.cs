@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace MaquinaTuringPrototipo
 {
+    /*
+     * La clase Operacion representa las operaciones de las maquinas compuestas, con sus propiedades, las operaciones son ejecutadas en
+     * la clase de Maquina haciendo uso de los metodos de la clase Cinta, ademas cada operacion tiene una lista de decisiones que pueden
+     * el orden en que son ejecutadas.
+     */
     public class Operacion
     {
         private string _strTipo;

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace MaquinaTuringPrototipo
 {
+    /*
+     * La clase Cinta maneja el alfabeto y cadena de la maquina de turing ademas de la memoria para guardar un simbolo.
+     * Tambiene tiene los metodos correspondientes a las operaciones de maquinas compuestas para manipular la cadena y el cabezal.
+     */
     public class Cinta
     {
         public List<char> Alfabeto = new List<char>();

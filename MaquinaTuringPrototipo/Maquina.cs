@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace MaquinaTuringPrototipo
 {
+    /*
+     * La clase Maquina representa una maquina de turing y contiene un objeto de tipo Cinta y una lista de Operaciones, se mantiene seguimiento
+     * de la Operacion actual, y las operaciones se ejecutan con el metodo EjecutarOperacion(), el cual ejecuta la operacion actual y actualiza
+     *  la posicion a la siguiente operacion.
+     */
     public class Maquina
     {
         public Cinta Cinta = new Cinta();
