@@ -47,6 +47,8 @@ namespace MaquinaTuringPrototipo
                     break;
             }
 
+
+            //Si la operacion tiene decisiones (aristas) entonces en vez de aumentar 1 a OperacionActual se evalua la condicion
             if(Op.Decisiones.Count > 0)
             {
                 int a = Op.Decisiones.Count -1;

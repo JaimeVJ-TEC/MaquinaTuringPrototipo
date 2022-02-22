@@ -13,6 +13,7 @@ namespace MaquinaTuringPrototipo
 {
     public partial class Form1 : Form
     {
+        //Objeto de la clase Maquina, la cual contiene un objeto Cinta y una lista de objetos Operacion
         Maquina MaquinaT = new Maquina();
 
         public Form1()
@@ -299,6 +300,7 @@ namespace MaquinaTuringPrototipo
             ActualizarOperaciones();
         }
 
+        //Combobox que activa y desactiva los controles de operacion respectivos
         private void cboOperacion_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch(cboOperacion.SelectedIndex)

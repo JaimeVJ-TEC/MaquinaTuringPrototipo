@@ -523,7 +523,7 @@ namespace MaquinaTuringPrototipo
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listView1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Simulador Maquina Turing";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
