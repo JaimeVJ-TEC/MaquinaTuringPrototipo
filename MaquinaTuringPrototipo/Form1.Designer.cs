@@ -45,7 +45,12 @@ namespace MaquinaTuringPrototipo
             this.label3 = new System.Windows.Forms.Label();
             this.btnPosicionInicial = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnOperacionEliminar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnDelta = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnDecisionEliminar = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.numDestino = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
@@ -62,13 +67,9 @@ namespace MaquinaTuringPrototipo
             this.label4 = new System.Windows.Forms.Label();
             this.listView2 = new System.Windows.Forms.ListView();
             this.btnEjecutarPasos = new System.Windows.Forms.Button();
-            this.btnDelta = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnOperacionEliminar = new System.Windows.Forms.Button();
-            this.btnDecisionEliminar = new System.Windows.Forms.Button();
             this.btnReiniciarOperaciones = new System.Windows.Forms.Button();
             this.btnReiniciarCadena = new System.Windows.Forms.Button();
+            this.btnEscribirMemoria = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -225,6 +226,7 @@ namespace MaquinaTuringPrototipo
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnEscribirMemoria);
             this.groupBox3.Controls.Add(this.btnOperacionEliminar);
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.btnDelta);
@@ -244,6 +246,36 @@ namespace MaquinaTuringPrototipo
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Operaciones";
             // 
+            // btnOperacionEliminar
+            // 
+            this.btnOperacionEliminar.Location = new System.Drawing.Point(147, 200);
+            this.btnOperacionEliminar.Name = "btnOperacionEliminar";
+            this.btnOperacionEliminar.Size = new System.Drawing.Size(107, 42);
+            this.btnOperacionEliminar.TabIndex = 21;
+            this.btnOperacionEliminar.Text = "Eliminar ultima operacion";
+            this.btnOperacionEliminar.UseVisualStyleBackColor = true;
+            this.btnOperacionEliminar.Click += new System.EventHandler(this.btnOperacionEliminar_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(149, 121);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Δ";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnDelta
+            // 
+            this.btnDelta.Location = new System.Drawing.Point(149, 156);
+            this.btnDelta.Name = "btnDelta";
+            this.btnDelta.Size = new System.Drawing.Size(28, 23);
+            this.btnDelta.TabIndex = 10;
+            this.btnDelta.Text = "Δ";
+            this.btnDelta.UseVisualStyleBackColor = true;
+            this.btnDelta.Click += new System.EventHandler(this.btnDelta_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnDecisionEliminar);
@@ -261,6 +293,26 @@ namespace MaquinaTuringPrototipo
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Decisiones";
+            // 
+            // btnDecisionEliminar
+            // 
+            this.btnDecisionEliminar.Location = new System.Drawing.Point(132, 104);
+            this.btnDecisionEliminar.Name = "btnDecisionEliminar";
+            this.btnDecisionEliminar.Size = new System.Drawing.Size(94, 29);
+            this.btnDecisionEliminar.TabIndex = 22;
+            this.btnDecisionEliminar.Text = "Eliminar decision";
+            this.btnDecisionEliminar.UseVisualStyleBackColor = true;
+            this.btnDecisionEliminar.Click += new System.EventHandler(this.btnDecisionEliminar_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(152, 22);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(28, 23);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Δ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // listBox1
             // 
@@ -427,56 +479,6 @@ namespace MaquinaTuringPrototipo
             this.btnEjecutarPasos.UseVisualStyleBackColor = true;
             this.btnEjecutarPasos.Click += new System.EventHandler(this.btnEjecutarPasos_Click);
             // 
-            // btnDelta
-            // 
-            this.btnDelta.Location = new System.Drawing.Point(149, 156);
-            this.btnDelta.Name = "btnDelta";
-            this.btnDelta.Size = new System.Drawing.Size(28, 23);
-            this.btnDelta.TabIndex = 10;
-            this.btnDelta.Text = "Δ";
-            this.btnDelta.UseVisualStyleBackColor = true;
-            this.btnDelta.Click += new System.EventHandler(this.btnDelta_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(149, 121);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Δ";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(152, 22);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(28, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Δ";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnOperacionEliminar
-            // 
-            this.btnOperacionEliminar.Location = new System.Drawing.Point(147, 200);
-            this.btnOperacionEliminar.Name = "btnOperacionEliminar";
-            this.btnOperacionEliminar.Size = new System.Drawing.Size(107, 42);
-            this.btnOperacionEliminar.TabIndex = 21;
-            this.btnOperacionEliminar.Text = "Eliminar ultima operacion";
-            this.btnOperacionEliminar.UseVisualStyleBackColor = true;
-            this.btnOperacionEliminar.Click += new System.EventHandler(this.btnOperacionEliminar_Click);
-            // 
-            // btnDecisionEliminar
-            // 
-            this.btnDecisionEliminar.Location = new System.Drawing.Point(132, 104);
-            this.btnDecisionEliminar.Name = "btnDecisionEliminar";
-            this.btnDecisionEliminar.Size = new System.Drawing.Size(94, 29);
-            this.btnDecisionEliminar.TabIndex = 22;
-            this.btnDecisionEliminar.Text = "Eliminar decision";
-            this.btnDecisionEliminar.UseVisualStyleBackColor = true;
-            this.btnDecisionEliminar.Click += new System.EventHandler(this.btnDecisionEliminar_Click);
-            // 
             // btnReiniciarOperaciones
             // 
             this.btnReiniciarOperaciones.Location = new System.Drawing.Point(685, 209);
@@ -496,6 +498,16 @@ namespace MaquinaTuringPrototipo
             this.btnReiniciarCadena.Text = "Reiniciar posicion";
             this.btnReiniciarCadena.UseVisualStyleBackColor = true;
             this.btnReiniciarCadena.Click += new System.EventHandler(this.btnReiniciarCadena_Click);
+            // 
+            // btnEscribirMemoria
+            // 
+            this.btnEscribirMemoria.Location = new System.Drawing.Point(183, 155);
+            this.btnEscribirMemoria.Name = "btnEscribirMemoria";
+            this.btnEscribirMemoria.Size = new System.Drawing.Size(28, 23);
+            this.btnEscribirMemoria.TabIndex = 22;
+            this.btnEscribirMemoria.Text = "σ";
+            this.btnEscribirMemoria.UseVisualStyleBackColor = true;
+            this.btnEscribirMemoria.Click += new System.EventHandler(this.btnEscribirMemoria_Click);
             // 
             // Form1
             // 
@@ -567,6 +579,7 @@ namespace MaquinaTuringPrototipo
         private System.Windows.Forms.Button btnDecisionEliminar;
         private System.Windows.Forms.Button btnReiniciarOperaciones;
         private System.Windows.Forms.Button btnReiniciarCadena;
+        private System.Windows.Forms.Button btnEscribirMemoria;
     }
 }
 

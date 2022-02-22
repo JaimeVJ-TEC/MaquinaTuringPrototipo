@@ -274,7 +274,7 @@ namespace MaquinaTuringPrototipo
                     if (txtSimboloReescribir.Text != "" || txtSimboloReescribir.Text.Length == 1)
                     {
                         char SimboloEscribir = char.Parse(txtSimboloReescribir.Text);
-                        if (SimboloEscribir == '#' || SimboloEscribir == 'Δ' || MaquinaT.Cinta.Alfabeto.Contains(SimboloEscribir))
+                        if (SimboloEscribir == 'σ' || SimboloEscribir == '#' || SimboloEscribir == 'Δ' || MaquinaT.Cinta.Alfabeto.Contains(SimboloEscribir))
                         {
                             op.Simbolo = SimboloEscribir;
                             MaquinaT.Operaciones.Add(op);
@@ -539,12 +539,12 @@ namespace MaquinaTuringPrototipo
 
         private void btnDelta_Click(object sender, EventArgs e)
         {
-            txtSimboloBusqueda.Text = "Δ";
+            txtSimboloReescribir.Text = "Δ";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            txtSimboloReescribir.Text = "Δ";
+            txtSimboloBusqueda.Text = "Δ";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -646,6 +646,11 @@ namespace MaquinaTuringPrototipo
             {
                 listView2.Items[MaquinaT.OperacionActual].Checked = true;
             }
+        }
+
+        private void btnEscribirMemoria_Click(object sender, EventArgs e)
+        {
+            txtSimboloReescribir.Text = "σ";
         }
     }
 }

@@ -94,7 +94,15 @@ namespace MaquinaTuringPrototipo
         //Operacion de Sobreescritura un simbolo con otro
         public void Sobreescribir(char Simbolo)
         {
-            if (Simbolo == 'Δ' || Simbolo == '#' || Alfabeto.Contains(Simbolo))
+            if(Simbolo == 'σ')
+            {
+                try
+                {
+                    _Cadena[PosicionActual] = Memoria;
+                }
+                catch(Exception) { }
+            }
+            else if (Simbolo == 'Δ' || Simbolo == '#' || Alfabeto.Contains(Simbolo))
             {
                 _Cadena[PosicionActual] = Simbolo;
             }
