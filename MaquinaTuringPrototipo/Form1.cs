@@ -105,7 +105,14 @@ namespace MaquinaTuringPrototipo
                 }
                 else
                 {
-                    MaquinaT.Cinta.Alfabeto.Add(char.Parse(txtSimbolo.Text));
+                    if (MaquinaT.Cinta.Alfabeto.Contains(char.Parse(txtSimbolo.Text)))
+                    {
+                        MessageBox.Show("El simbolo ya existe en el alfabeto");
+                    }
+                    else
+                    {
+                        MaquinaT.Cinta.Alfabeto.Add(char.Parse(txtSimbolo.Text));
+                    }
                 }
             }
             else
@@ -141,6 +148,7 @@ namespace MaquinaTuringPrototipo
                 if (txtCadena.Text.Length == 1)
                 {
                     MaquinaT.Cinta.AgregarCadena(char.Parse(txtCadena.Text));
+                    ActualizarCadena();
                 }
                 else
                 {
@@ -151,7 +159,6 @@ namespace MaquinaTuringPrototipo
             {
                 MessageBox.Show(ex.Message);
             }
-            ActualizarCadena();
         }
 
         private void btnVacioCadena_Click(object sender, EventArgs e)
@@ -176,6 +183,9 @@ namespace MaquinaTuringPrototipo
             {
                 listView1.Items.Add(a.ToString());
             }
+
+            if(MaquinaT.Cinta._Cadena.Count != 0)
+                listView1.EnsureVisible((MaquinaT.Cinta._Cadena.Count-1));
         }
 
         private void btnPosicionInicial_Click(object sender, EventArgs e)
@@ -311,6 +321,7 @@ namespace MaquinaTuringPrototipo
                     chkNegacionOp.Enabled = false;
                     btnDelta.Enabled = false;
                     button1.Enabled = false;
+                    btnEscribirMemoria.Enabled = false;
                     break;
 
                 case 1:
@@ -319,6 +330,7 @@ namespace MaquinaTuringPrototipo
                     chkNegacionOp.Enabled = false;
                     btnDelta.Enabled = false;
                     button1.Enabled = false;
+                    btnEscribirMemoria.Enabled = false;
                     break;
 
                 case 2:
@@ -327,6 +339,7 @@ namespace MaquinaTuringPrototipo
                     chkNegacionOp.Enabled = true;
                     btnDelta.Enabled = false;
                     button1.Enabled = true;
+                    btnEscribirMemoria.Enabled = false;
                     break;
 
                 case 3:
@@ -343,6 +356,7 @@ namespace MaquinaTuringPrototipo
                     chkNegacionOp.Enabled = false;
                     btnDelta.Enabled = true;
                     button1.Enabled = false;
+                    btnEscribirMemoria.Enabled = true;
                     break;
 
                 case 5:
@@ -351,6 +365,7 @@ namespace MaquinaTuringPrototipo
                     chkNegacionOp.Enabled = false;
                     btnDelta.Enabled = false;
                     button1.Enabled = false;
+                    btnEscribirMemoria.Enabled = false;
                     break;
 
                 case 6:
@@ -359,6 +374,7 @@ namespace MaquinaTuringPrototipo
                     chkNegacionOp.Enabled = false;
                     btnDelta.Enabled = false;
                     button1.Enabled = false;
+                    btnEscribirMemoria.Enabled = false;
                     break;
             }
         }
@@ -397,7 +413,7 @@ namespace MaquinaTuringPrototipo
                         break;
 
                     case "Guardar":
-                        listView2.Items.Add("σ" + "\n" + Num);
+                        listView2.Items.Add("→σ" + "\n" + Num);
                         break;
 
                     case "N":
@@ -527,6 +543,7 @@ namespace MaquinaTuringPrototipo
                     }
 
                     MaquinaT.EjecutarOperacion();
+
                 }
                 else
                 {
@@ -557,6 +574,7 @@ namespace MaquinaTuringPrototipo
         private void btnOperacionEliminar_Click(object sender, EventArgs e)
         {
             MaquinaT.Operaciones.RemoveAt(MaquinaT.Operaciones.Count - 1);
+            MaquinaT.OperacionActual = 0;
             ActualizarOperaciones();
         }
 
@@ -653,6 +671,16 @@ namespace MaquinaTuringPrototipo
         private void btnEscribirMemoria_Click(object sender, EventArgs e)
         {
             txtSimboloReescribir.Text = "σ";
+        }
+
+        private void btnReiniciarMaquina_Click(object sender, EventArgs e)
+        {
+            MaquinaT = new Maquina();
+
+            ActualizarAlfabeto();
+            listView1.Items.Clear();
+            listView2.Items.Clear();
+            listBox1.Items.Clear();
         }
     }
 }

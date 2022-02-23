@@ -45,6 +45,7 @@ namespace MaquinaTuringPrototipo
             this.label3 = new System.Windows.Forms.Label();
             this.btnPosicionInicial = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnEscribirMemoria = new System.Windows.Forms.Button();
             this.btnOperacionEliminar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnDelta = new System.Windows.Forms.Button();
@@ -69,7 +70,7 @@ namespace MaquinaTuringPrototipo
             this.btnEjecutarPasos = new System.Windows.Forms.Button();
             this.btnReiniciarOperaciones = new System.Windows.Forms.Button();
             this.btnReiniciarCadena = new System.Windows.Forms.Button();
-            this.btnEscribirMemoria = new System.Windows.Forms.Button();
+            this.btnReiniciarMaquina = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -245,6 +246,16 @@ namespace MaquinaTuringPrototipo
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Operaciones";
+            // 
+            // btnEscribirMemoria
+            // 
+            this.btnEscribirMemoria.Location = new System.Drawing.Point(183, 155);
+            this.btnEscribirMemoria.Name = "btnEscribirMemoria";
+            this.btnEscribirMemoria.Size = new System.Drawing.Size(28, 23);
+            this.btnEscribirMemoria.TabIndex = 22;
+            this.btnEscribirMemoria.Text = "σ";
+            this.btnEscribirMemoria.UseVisualStyleBackColor = true;
+            this.btnEscribirMemoria.Click += new System.EventHandler(this.btnEscribirMemoria_Click);
             // 
             // btnOperacionEliminar
             // 
@@ -441,7 +452,7 @@ namespace MaquinaTuringPrototipo
             "Izquierda",
             "Busqueda a derecha",
             "Busqueda a izquierda",
-            "Sobreescrbir",
+            "Escrbir",
             "Guardar",
             "N"});
             this.cboOperacion.Location = new System.Drawing.Point(6, 96);
@@ -499,21 +510,24 @@ namespace MaquinaTuringPrototipo
             this.btnReiniciarCadena.UseVisualStyleBackColor = true;
             this.btnReiniciarCadena.Click += new System.EventHandler(this.btnReiniciarCadena_Click);
             // 
-            // btnEscribirMemoria
+            // btnReiniciarMaquina
             // 
-            this.btnEscribirMemoria.Location = new System.Drawing.Point(183, 155);
-            this.btnEscribirMemoria.Name = "btnEscribirMemoria";
-            this.btnEscribirMemoria.Size = new System.Drawing.Size(28, 23);
-            this.btnEscribirMemoria.TabIndex = 22;
-            this.btnEscribirMemoria.Text = "σ";
-            this.btnEscribirMemoria.UseVisualStyleBackColor = true;
-            this.btnEscribirMemoria.Click += new System.EventHandler(this.btnEscribirMemoria_Click);
+            this.btnReiniciarMaquina.BackColor = System.Drawing.Color.LightSalmon;
+            this.btnReiniciarMaquina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReiniciarMaquina.Location = new System.Drawing.Point(685, 298);
+            this.btnReiniciarMaquina.Name = "btnReiniciarMaquina";
+            this.btnReiniciarMaquina.Size = new System.Drawing.Size(103, 39);
+            this.btnReiniciarMaquina.TabIndex = 26;
+            this.btnReiniciarMaquina.Text = "Reiniciar Maquina";
+            this.btnReiniciarMaquina.UseVisualStyleBackColor = false;
+            this.btnReiniciarMaquina.Click += new System.EventHandler(this.btnReiniciarMaquina_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnReiniciarMaquina);
             this.Controls.Add(this.btnReiniciarCadena);
             this.Controls.Add(this.btnReiniciarOperaciones);
             this.Controls.Add(this.btnEjecutarPasos);
@@ -580,6 +594,7 @@ namespace MaquinaTuringPrototipo
         private System.Windows.Forms.Button btnReiniciarOperaciones;
         private System.Windows.Forms.Button btnReiniciarCadena;
         private System.Windows.Forms.Button btnEscribirMemoria;
+        private System.Windows.Forms.Button btnReiniciarMaquina;
     }
 }
 

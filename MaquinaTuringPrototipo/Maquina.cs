@@ -23,6 +23,7 @@ namespace MaquinaTuringPrototipo
         {
             if (OperacionActual == Operaciones.Count)
             {
+                OperacionActual = 0;
                 throw new Exception("Fin");
             }
 

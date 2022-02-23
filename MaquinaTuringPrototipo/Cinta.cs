@@ -54,9 +54,14 @@ namespace MaquinaTuringPrototipo
                 PosicionActual--;
 
             if (PosicionActual == -1)
+            {
+                PosicionActual = 0;
                 throw new Exception("Terminacion abnormal");
+            }
             else if (PosicionActual >= _Cadena.Count)
-                throw new Exception("Fin de la cadena");
+            {
+                _Cadena.Add('Δ');
+            }
         }
 
         //Operacion de busqueda a derecha o izquierda
@@ -64,27 +69,68 @@ namespace MaquinaTuringPrototipo
         {
             if (Simbolo == 'Δ' || Simbolo == '#' || Alfabeto.Contains(Simbolo))
             {
+                bool Parada = false;
+
                 if (Derecha)
                 {
                     Movimiento(true);
                     if (Not)
+                    {
+                        for (int i = PosicionActual; i < _Cadena.Count; i++)
+                        {
+                            if (_Cadena[i] != Simbolo)
+                            {
+                                Parada = false;
+                                break;
+                            }
+                            else
+                                Parada = true;
+                        }
+                        if (Parada)
+                        {
+                            PosicionActual = PosiciconInicial;
+                            throw new Exception("Problema de parada");
+                        }
+
                         if (_Cadena[PosicionActual] != Simbolo)
                             return true;
                         else
                             return false;
-                    else if (_Cadena[PosicionActual] == Simbolo)
-                        return true;
+                    }
                     else
-                        return false;
+                    {
+                        for (int i = PosicionActual; i < _Cadena.Count; i++)
+                        {
+                            if (_Cadena[i] == Simbolo)
+                            {
+                                Parada = false;
+                                break;
+                            }
+                            else
+                                Parada = true;
+                        }
+                        if (Parada)
+                        {
+                            PosicionActual = PosiciconInicial;
+                            throw new Exception("Problema de parada");
+                        }
+
+                        if (_Cadena[PosicionActual] == Simbolo)
+                            return true;
+                        else
+                            return false;
+                    }
                 }
                 else
                 {
                     Movimiento(false);
-                    if(Not)
+                    if (Not)
+                    {
                         if (_Cadena[PosicionActual] != Simbolo)
                             return true;
                         else
                             return false;
+                    }
                     else if (_Cadena[PosicionActual] == Simbolo)
                         return true;
                     else
