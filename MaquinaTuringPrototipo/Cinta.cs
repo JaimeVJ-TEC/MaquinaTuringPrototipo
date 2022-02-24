@@ -86,6 +86,7 @@ namespace MaquinaTuringPrototipo
                             else
                                 Parada = true;
                         }
+
                         if (Parada)
                         {
                             PosicionActual = PosiciconInicial;
@@ -99,20 +100,23 @@ namespace MaquinaTuringPrototipo
                     }
                     else
                     {
-                        for (int i = PosicionActual; i < _Cadena.Count; i++)
+                        if (Simbolo != 'Δ')
                         {
-                            if (_Cadena[i] == Simbolo)
+                            for (int i = PosicionActual; i < _Cadena.Count; i++)
                             {
-                                Parada = false;
-                                break;
+                                if (_Cadena[i] == Simbolo)
+                                {
+                                    Parada = false;
+                                    break;
+                                }
+                                else
+                                    Parada = true;
                             }
-                            else
-                                Parada = true;
-                        }
-                        if (Parada)
-                        {
-                            PosicionActual = PosiciconInicial;
-                            throw new Exception("Problema de parada");
+                            if (Parada)
+                            {
+                                PosicionActual = PosiciconInicial;
+                                throw new Exception("Problema de parada");
+                            }
                         }
 
                         if (_Cadena[PosicionActual] == Simbolo)
